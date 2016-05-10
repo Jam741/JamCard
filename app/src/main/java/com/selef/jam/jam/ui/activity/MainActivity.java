@@ -1,16 +1,26 @@
 package com.selef.jam.jam.ui.activity;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.annotation.ColorRes;
+import android.support.v4.content.ContextCompat;
 import android.transition.Slide;
+import android.transition.Transition;
 import android.transition.TransitionInflater;
 import android.transition.TransitionManager;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.View;
+import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.AccelerateInterpolator;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -42,7 +52,6 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         setupWindowAnimator();
-
     }
 
     @Override
@@ -81,7 +90,7 @@ public class MainActivity extends BaseActivity {
     @OnClick(R.id.main_start)
     public void onClick() {
         Intent intent = new Intent(this, TypeActivity.class);
-        transitionTo(intent);
+        revealRed(intent);
     }
 
     private Handler handler = new Handler() {
@@ -97,4 +106,88 @@ public class MainActivity extends BaseActivity {
             }
         }
     };
+
+    private void revealRed(final Intent intent) {
+        final ViewGroup.LayoutParams originalParams = mainStart.getLayoutParams();
+        Transition transition = TransitionInflater.from(this).inflateTransition(R.transition.changebounds_with_arcmotion);
+        transition.addListener(new Transition.TransitionListener() {
+            @Override
+            public void onTransitionStart(Transition transition) {
+            }
+
+            @Override
+            public void onTransitionEnd(Transition transition) {
+                animateRevealColor(mainRoot, R.color.sample_blue);
+//                body.setText(R.string.reveal_body3);
+//                body.setTextColor(ContextCompat.getColor(MainActivity.this, R.color.theme_blue_background));
+                mainStart.setLayoutParams(originalParams);
+
+                transitionTo(intent);
+            }
+
+            @Override
+            public void onTransitionCancel(Transition transition) {
+            }
+
+            @Override
+            public void onTransitionPause(Transition transition) {
+
+            }
+
+            @Override
+            public void onTransitionResume(Transition transition) {
+
+            }
+        });
+        TransitionManager.beginDelayedTransition(mainRoot, transition);
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT);
+        mainStart.setLayoutParams(layoutParams);
+    }
+
+    private void animateRevealShow(View viewRoot) {
+        int cx = (viewRoot.getLeft() + viewRoot.getRight()) / 2;
+        int cy = (viewRoot.getTop() + viewRoot.getBottom()) / 2;
+        int finalRadius = Math.max(viewRoot.getWidth(), viewRoot.getHeight());
+
+        Animator anim = ViewAnimationUtils.createCircularReveal(viewRoot, cx, cy, 0, finalRadius);
+        viewRoot.setVisibility(View.VISIBLE);
+        anim.setDuration(getResources().getInteger(R.integer.anim_duration_long));
+        anim.setInterpolator(new AccelerateInterpolator());
+        anim.start();
+    }
+
+    private void animateRevealColor(ViewGroup viewRoot, @ColorRes int color) {
+        int cx = (viewRoot.getLeft() + viewRoot.getRight()) / 2;
+        int cy = (viewRoot.getTop() + viewRoot.getBottom()) / 2;
+        animateRevealColorFromCoordinates(viewRoot, color, cx, cy);
+    }
+
+    private Animator animateRevealColorFromCoordinates(ViewGroup viewRoot, @ColorRes int color, int x, int y) {
+        float finalRadius = (float) Math.hypot(viewRoot.getWidth(), viewRoot.getHeight());
+
+        Animator anim = ViewAnimationUtils.createCircularReveal(viewRoot, x, y, 0, finalRadius);
+        viewRoot.setBackgroundColor(ContextCompat.getColor(this, color));
+        anim.setDuration(getResources().getInteger(R.integer.anim_duration_long));
+        anim.setInterpolator(new AccelerateDecelerateInterpolator());
+        anim.start();
+        return anim;
+    }
+
+    private void animateRevealHide(final View viewRoot) {
+        int cx = (viewRoot.getLeft() + viewRoot.getRight()) / 2;
+        int cy = (viewRoot.getTop() + viewRoot.getBottom()) / 2;
+        int initialRadius = viewRoot.getWidth();
+
+        Animator anim = ViewAnimationUtils.createCircularReveal(viewRoot, cx, cy, initialRadius, 0);
+        anim.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+                viewRoot.setVisibility(View.INVISIBLE);
+            }
+        });
+        anim.setDuration(getResources().getInteger(R.integer.anim_duration_medium));
+        anim.start();
+    }
 }

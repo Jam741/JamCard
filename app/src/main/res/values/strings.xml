@@ -3,4 +3,9 @@
 
     <string name="main_icon">main_icon</string>
     <string name="main_name">main_name</string>
+    <string name="pj_name">pj_name</string>
+    <string name="pj_date">pj_date</string>
+    <string name="pj_des">pj_des</string>
+    <string name="pj_job">pj_job</string>
+
 </resources>

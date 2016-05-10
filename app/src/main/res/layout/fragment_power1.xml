@@ -1,8 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/activity_horizontal_margin">
 
 
+    <TextView
+        android:id="@+id/center1"
+        style="@style/MaterialAnimations.TextAppearance.Title.Inverse"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/circle_24dp"
+        android:backgroundTint="@color/material_animations_primary"
+        android:gravity="center"
+        android:text="Skill"
+        android:transitionName="@string/main_icon" />
 
-</LinearLayout>
+
+    <TextView
+        android:id="@+id/java"
+        style="@style/MaterialAnimations.Text.Section"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/center1"
+        android:layout_centerHorizontal="true"
+        android:text="●Java"
+        android:textColor="@color/material_animations_blank" />
+
+    <TextView
+        android:id="@+id/library"
+        style="@style/MaterialAnimations.Text.Section"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/center1"
+        android:layout_centerHorizontal="true"
+        android:text="●开源Library(Glide,Fresco,Picasso,\nSquare open Source，...)"
+        android:textColor="@color/material_animations_blank" />
+
+    <TextView
+        android:id="@+id/design"
+        style="@style/MaterialAnimations.Text.Section"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/java"
+        android:layout_toRightOf="@id/center1"
+        android:text="●产品设计概念"
+        android:textColor="@color/material_animations_blank" />
+
+    <TextView
+        android:id="@+id/net"
+        style="@style/MaterialAnimations.Text.Section"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/center1"
+        android:text="●Android网络编程，SQLite"
+        android:textColor="@color/material_animations_blank" />
+
+    <TextView
+        android:id="@+id/animator"
+        style="@style/MaterialAnimations.Text.Section"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/library"
+        android:layout_toRightOf="@id/center1"
+        android:text="●动画特效开发，SDK开发，开发框架设计"
+        android:textColor="@color/material_animations_blank" />
+
+    <TextView
+        android:id="@+id/model"
+        style="@style/MaterialAnimations.Text.Section"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/library"
+        android:layout_toLeftOf="@id/center1"
+        android:text=" ●设计模式（MVC，MVP，MVVM）"
+        android:textColor="@color/material_animations_blank" />
+
+    <TextView
+        android:id="@+id/uitest"
+        style="@style/MaterialAnimations.Text.Section"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@id/center1"
+        android:text="●UIAutomato，UI测试"
+        android:textColor="@color/material_animations_blank" />
+
+    <TextView
+        android:id="@+id/ui"
+        style="@style/MaterialAnimations.Text.Section"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/java"
+        android:layout_toLeftOf="@id/center1"
+        android:text="  ●UI编程，自定控件"
+        android:textColor="@color/material_animations_blank" />
+
+
+    <Button
+        android:id="@+id/nextButton"
+        style="@style/MaterialAnimations.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="EXIT"
+        android:textColor="@color/material_animations_blank" />
+
+</RelativeLayout>

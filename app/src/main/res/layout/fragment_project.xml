@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/name"
+                style="@style/MaterialAnimations.Text.Body"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="福买" />
+
+            <TextView
+                android:id="@+id/date"
+                style="@style/MaterialAnimations.Text.Section"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:text="1500 - 1900"
+                android:textColor="@color/text_light" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/des"
+            style="@style/MaterialAnimations.Text.Body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="项目描述：服务与世豪广场内部会员，项目以世豪广场室内地图导航为基础，用户可以在世豪广场室内定位，导航商店，绘制路径，以及停车位导航。" />
+
+
+        <TextView
+            android:id="@+id/jop"
+            style="@style/MaterialAnimations.Text.Body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="工作责任：二维码功能开发 ；调用系统相机功能SDK开发；部分页面布局及与后台基础数据对接。" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/nextBtn"
+        style="@style/MaterialAnimations.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="NEXT" />
+
+</RelativeLayout>

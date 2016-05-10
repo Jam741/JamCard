@@ -35,6 +35,7 @@ public class TypeActivity extends BaseActivity {
         setAnimator();
         typeModels = initData();
         intView();
+        setupToolbar();
     }
 
     private void intView() {
@@ -46,10 +47,10 @@ public class TypeActivity extends BaseActivity {
 
     private List<TypeModel> initData() {
         List<TypeModel> typeModels = new ArrayList<>();
-        typeModels.add(createTypeModel("power","http://cdn-img.easyicon.net/png/11623/1162374.gif"));
-        typeModels.add(createTypeModel("Working", "http://cdn-img.easyicon.net/png/11907/1190732.gif"));
-        typeModels.add(createTypeModel("Project", "http://cdn-img.easyicon.net/png/11784/1178446.gif"));
-        typeModels.add(createTypeModel("liked", "http://cdn-img.easyicon.net/png/11994/1199475.gif"));
+        typeModels.add(createTypeModel("技术能力", "http://cdn-img.easyicon.net/png/11623/1162374.gif"));
+        typeModels.add(createTypeModel("工作经历", "http://cdn-img.easyicon.net/png/11907/1190732.gif"));
+        typeModels.add(createTypeModel("项目经验", "http://cdn-img.easyicon.net/png/11784/1178446.gif"));
+        typeModels.add(createTypeModel("爱好", "http://cdn-img.easyicon.net/png/11994/1199475.gif"));
         return typeModels;
     }
 

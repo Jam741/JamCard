@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bg_color"
     android:orientation="vertical">
 
     <LinearLayout
@@ -11,31 +12,44 @@
         android:orientation="vertical">
 
 
-        <LinearLayout
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            style="@style/MaterialAnimations.TextAppearance.Title"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="@dimen/activity_horizontal_margin">
+            android:layout_height="?android:attr/actionBarSize"
+            android:background="?android:colorPrimary"
+            android:elevation="@dimen/elevation_header">
 
-            <com.facebook.drawee.view.SimpleDraweeView
-                android:id="@+id/man_icon"
-                style="@style/SimpleDraeewStyle"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_centerInParent="true"
-                android:transitionName="@string/main_icon"
-                app:roundAsCircle="true" />
-
-            <TextView
-                style="@style/MaterialAnimations.Text.Body"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Jam"
-                android:textColor="@color/material_animations_primary"
-                android:transitionName="@string/main_icon" />
+                android:layout_gravity="right"
+                android:orientation="horizontal">
 
 
-        </LinearLayout>
+                <TextView
+                    style="@style/MaterialAnimations.Text.Body"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="何加明"
+                    android:textColor="@color/colorAccent"
+                    android:transitionName="@string/main_icon" />
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/man_icon"
+                    style="@style/SimpleDraeewStyle"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_centerInParent="true"
+                    android:layout_margin="10dp"
+                    android:transitionName="@string/main_icon"
+                    app:placeholderImage="@mipmap/icon_ortait"
+                    app:roundAsCircle="true" />
+
+            </LinearLayout>
+
+
+        </android.support.v7.widget.Toolbar>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/type_recyclerView"

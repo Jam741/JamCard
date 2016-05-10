@@ -14,7 +14,10 @@ import android.widget.TextView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.selef.jam.jam.R;
 import com.selef.jam.jam.model.TypeModel;
+import com.selef.jam.jam.ui.activity.PowerActivity;
+import com.selef.jam.jam.ui.activity.ProjectActivity;
 import com.selef.jam.jam.ui.activity.TransitionHelper;
+import com.selef.jam.jam.ui.activity.WorkActivity;
 
 import java.util.List;
 
@@ -38,26 +41,40 @@ public class TypeAdapter extends RecyclerView.Adapter<MyVH> {
     }
 
     @Override
-    public void onBindViewHolder(MyVH holder, final int position) {
+    public void onBindViewHolder(final MyVH holder, final int position) {
         TypeModel model = typeModels.get(position);
         holder.typeText.setText(model.getTypeName());
         holder.typeImg.setImageURI(Uri.parse(model.toString()));
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                itemCheneed(position);
+                itemCheneed(position, holder);
             }
         });
     }
 
-    private void itemCheneed(int position) {
+    private void itemCheneed(int position, MyVH holder) {
         switch (position) {
             case 0:
-//                Intent intent = new Intent(activity,)
+                Intent intent = new Intent(activity, PowerActivity.class);
+                Pair<View, String>[] pairs = TransitionHelper.createSafeTransitionParticipants(activity, false,
+                        new Pair<>(holder.typeImg, activity.getResources().getString(R.string.main_icon)),
+                        new Pair<>(holder.typeText, activity.getResources().getString(R.string.main_name)));
+                transitionTo(intent, pairs, activity);
                 break;
             case 1:
+                Intent intent1 = new Intent(activity, WorkActivity.class);
+                Pair<View, String>[] pairs1 = TransitionHelper.createSafeTransitionParticipants(activity, false,
+                        new Pair<>(holder.typeImg, activity.getResources().getString(R.string.main_icon)),
+                        new Pair<>(holder.typeText, activity.getResources().getString(R.string.main_name)));
+                transitionTo(intent1, pairs1, activity);
                 break;
             case 2:
+                Intent intent2 = new Intent(activity, ProjectActivity.class);
+                Pair<View, String>[] pairs2 = TransitionHelper.createSafeTransitionParticipants(activity, false,
+                        new Pair<>(holder.typeImg, activity.getResources().getString(R.string.main_icon)),
+                        new Pair<>(holder.typeText, activity.getResources().getString(R.string.main_name)));
+                transitionTo(intent2, pairs2, activity);
                 break;
             case 3:
                 break;
