@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".ui.activity.MainActivity">
+
+    <LinearLayout
+        android:id="@+id/main_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:background="@drawable/store_circle">
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/man_icon"
+                    style="@style/SimpleDraeewStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_centerInParent="true"
+                    android:transitionName="@string/main_icon"
+                    app:roundAsCircle="true" />
+
+            </RelativeLayout>
+
+            <TextView
+                style="@style/MaterialAnimations.TextAppearance.Title.Inverse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:layout_marginTop="20dp"
+                android:gravity="right"
+                android:text="Android developer"
+                android:transitionName="@string/main_name" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/bottom_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.0"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/mainName"
+                    style="@style/MaterialAnimations.Text.Body"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Name : Jam"
+                    android:transitionName="@string/main_icon" />
+
+
+                <TextView
+                    style="@style/MaterialAnimations.Text.Body"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Age : 24" />
+
+
+            </LinearLayout>
+
+            <TextView
+                style="@style/MaterialAnimations.Text.Body"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email : jamisonline@outlook.com" />
+
+            <TextView
+                style="@style/MaterialAnimations.Text.Body"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="开发经验：2年" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <com.andexert.library.RippleView
+        style="@style/RippleViewStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true">
+
+        <TextView
+            android:id="@+id/main_start"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/circle_24dp"
+            android:backgroundTint="@color/colorAccent"
+            android:gravity="center"
+            android:text="Start"
+            android:textSize="18sp" />
+
+    </com.andexert.library.RippleView>
+
+</RelativeLayout>
